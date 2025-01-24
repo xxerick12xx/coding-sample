@@ -7,7 +7,7 @@ const Root = React.forwardRef<
   <div className="relative w-full overflow-auto">
     <table
       ref={ref}
-      className={`w-full caption-bottom text-sm ${className}`}
+      className={`w-full caption-bottom text-sm ${className ? className : ""}`}
       {...props}
     />
   </div>

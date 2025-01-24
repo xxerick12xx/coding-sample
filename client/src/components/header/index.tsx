@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router";
-import { Button } from "./../../ui";
+import { Button, Container } from "./../../ui";
 
 const NavItem = ({
   href,
@@ -20,7 +20,7 @@ export const Header = () => {
 
   return (
     <nav className="bg-background">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -48,7 +48,7 @@ export const Header = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </Container>
 
       {isOpen && (
         <div className="md:hidden bg-background" id="mobile-menu">

@@ -1,13 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { TablePage } from "./pages/";
 import { Header } from "./components";
+import { Container } from "./ui";
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route index element={<TablePage />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route index element={<TablePage />} />
+        </Routes>
+      </Container>
     </BrowserRouter>
   );
 }
