@@ -18,7 +18,11 @@ const Header = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={`[&_tr]:border-b ${className})`} {...props} />
+  <thead
+    ref={ref}
+    className={`[&_tr]:border-b ${className ? className : ""}`}
+    {...props}
+  />
 ));
 Header.displayName = "Table.Header";
 
@@ -28,7 +32,7 @@ const Body = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={`[&_tr:last-child]:border-0 ${className}`}
+    className={`[&_tr:last-child]:border-0 ${className ? className : ""}`}
     {...props}
   />
 ));
@@ -40,7 +44,9 @@ const Footer = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
-    className={`border-t bg-muted/50 font-medium [&>tr]:last:border-b-0 ${className}`}
+    className={`border-t bg-muted/50 font-medium [&>tr]:last:border-b-0 ${
+      className ? className : ""
+    }`}
     {...props}
   />
 ));
@@ -52,7 +58,9 @@ const Row = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tr
     ref={ref}
-    className={`border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${className}`}
+    className={`border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${
+      className ? className : ""
+    }`}
     {...props}
   />
 ));
@@ -64,7 +72,9 @@ const Head = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <th
     ref={ref}
-    className={`h-12 px-4 text-left align-middle font-bold [&:has([role=checkbox])]:pr-0 ${className}`}
+    className={`h-12 px-4 text-left align-middle font-bold [&:has([role=checkbox])]:pr-0 ${
+      className ? className : ""
+    }`}
     {...props}
   />
 ));
@@ -76,7 +86,9 @@ const Data = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={`p-4 align-middle [&:has([role=checkbox])]:pr-0 ${className}`}
+    className={`p-4 align-middle [&:has([role=checkbox])]:pr-0 ${
+      className ? className : ""
+    }`}
     {...props}
   />
 ));
@@ -88,7 +100,9 @@ const Caption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={`mt-4 text-sm text-muted-foreground ${className}`}
+    className={`mt-4 text-sm text-muted-foreground ${
+      className ? className : ""
+    }`}
     {...props}
   />
 ));

@@ -1,6 +1,19 @@
-import { Table } from "./../../ui";
+import { Table, Button } from "./../../ui";
 import { dummyData } from "./table-page.constant";
+import { Trash, Pencil } from "lucide-react";
 
+const ActionComponents = () => {
+  return (
+    <>
+      <Button variant="ghost" size="icon">
+        <Pencil fill="#111" color="#fff" />
+      </Button>
+      <Button variant="ghost" size="icon">
+        <Trash fill="#111" color="#fff" />
+      </Button>
+    </>
+  );
+};
 function TablePage() {
   return (
     <section>
@@ -21,15 +34,12 @@ function TablePage() {
               <Table.Data>{data.paymentStatus}</Table.Data>
               <Table.Data>{data.paymentMethod}</Table.Data>
               <Table.Data>{data.totalAmount}</Table.Data>
+              <Table.Data>
+                <ActionComponents />
+              </Table.Data>
             </Table.Row>
           ))}
         </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.Data colSpan={3}>Total</Table.Data>
-            <Table.Data className="text-right">$2,500.00</Table.Data>
-          </Table.Row>
-        </Table.Footer>
       </Table>
     </section>
   );
