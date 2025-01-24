@@ -50,7 +50,7 @@ const CreateReferralPage = () => {
           </Form.Group>
 
           <Form.Group>
-            <Button variant="secondary">Create Referral</Button>
+            <Button variant="outline">Upload Avatar</Button>
             <Button>Create Referral</Button>
           </Form.Group>
         </Form>

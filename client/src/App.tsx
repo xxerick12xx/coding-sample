@@ -9,7 +9,7 @@ function App() {
       <Container>
         <Routes>
           <Route index element={<TablePage />} />
-          <Route path="/create" element={<CreateReferralPage />} />
+          <Route path="/create/:id?" element={<CreateReferralPage />} />
         </Routes>
       </Container>
     </BrowserRouter>
