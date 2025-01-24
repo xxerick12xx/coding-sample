@@ -1,13 +1,80 @@
-import { Button, Input, HeadingTag1, HeadingTag5 } from "./../../ui";
+import { Table } from "./../../ui";
+
+const invoices = [
+  {
+    invoice: "INV001",
+    paymentStatus: "Paid",
+    totalAmount: "$250.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV002",
+    paymentStatus: "Pending",
+    totalAmount: "$150.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV003",
+    paymentStatus: "Unpaid",
+    totalAmount: "$350.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV004",
+    paymentStatus: "Paid",
+    totalAmount: "$450.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV005",
+    paymentStatus: "Paid",
+    totalAmount: "$550.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV006",
+    paymentStatus: "Pending",
+    totalAmount: "$200.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV007",
+    paymentStatus: "Unpaid",
+    totalAmount: "$300.00",
+    paymentMethod: "Credit Card",
+  },
+];
 
 function TablePage() {
   return (
-    <>
-      <HeadingTag1>Referral Builder</HeadingTag1>
-      <HeadingTag5>Personal Details</HeadingTag5>
-      <Input />
-      <Button className="text-primary">Test</Button>
-    </>
+    <Table>
+      <Table.Header>
+        <Table.Row>
+          <Table.Head className="w-[100px]">Invoice</Table.Head>
+          <Table.Head>Status</Table.Head>
+          <Table.Head>Method</Table.Head>
+          <Table.Head className="text-right">Amount</Table.Head>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {invoices.map((invoice) => (
+          <Table.Row key={invoice.invoice}>
+            <Table.Data className="font-medium">{invoice.invoice}</Table.Data>
+            <Table.Data>{invoice.paymentStatus}</Table.Data>
+            <Table.Data>{invoice.paymentMethod}</Table.Data>
+            <Table.Data className="text-right">
+              {invoice.totalAmount}
+            </Table.Data>
+          </Table.Row>
+        ))}
+      </Table.Body>
+      <Table.Footer>
+        <Table.Row>
+          <Table.Data colSpan={3}>Total</Table.Data>
+          <Table.Data className="text-right">$2,500.00</Table.Data>
+        </Table.Row>
+      </Table.Footer>
+    </Table>
   );
 }
 

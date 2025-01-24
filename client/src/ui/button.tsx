@@ -8,7 +8,7 @@ type ButtonProps = {
 const getVariantClass = (variant: ButtonProps["variant"]) => {
   switch (variant) {
     case "primary":
-      return "bg-green-400 text-white shadow hover:bg-green-200";
+      return "bg-primary text-primary-foreground shadow hover:bg-primary/90";
 
     case "secondary":
       return "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90";
