@@ -40,4 +40,5 @@ export const Form = Object.assign(Root, {
   ErrorLabel,
   Group,
   Item,
+  Label,
 });

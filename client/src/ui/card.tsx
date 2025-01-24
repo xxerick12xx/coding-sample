@@ -6,7 +6,7 @@ const Root = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`rounded border border-muted bg-card text-card-foreground shadow-sm ${
+    className={`rounded border border-muted bg-white text-card-foreground shadow-sm ${
       className ? className : ""
     }`}
     {...props}
