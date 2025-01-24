@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import { TablePage } from "./pages/";
+import { TablePage, CreateReferralPage } from "./pages/";
 import { Header } from "./components";
 import { Container } from "./ui";
 function App() {
@@ -9,6 +9,7 @@ function App() {
       <Container>
         <Routes>
           <Route index element={<TablePage />} />
+          <Route path="/create" element={<CreateReferralPage />} />
         </Routes>
       </Container>
     </BrowserRouter>

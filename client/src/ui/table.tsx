@@ -58,7 +58,7 @@ const Row = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tr
     ref={ref}
-    className={`border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${
+    className={`border-b-2 border-muted transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${
       className ? className : ""
     }`}
     {...props}

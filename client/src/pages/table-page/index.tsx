@@ -1,4 +1,4 @@
-import { Table, Button } from "./../../ui";
+import { Table, Button, Card } from "./../../ui";
 import { dummyData } from "./table-page.constant";
 import { Trash, Pencil } from "lucide-react";
 
@@ -16,32 +16,34 @@ const ActionComponents = () => {
 };
 function TablePage() {
   return (
-    <section>
-      <Table>
-        <Table.Header>
-          <Table.Row>
-            <Table.Head>GIVEN NAME</Table.Head>
-            <Table.Head>SURNAME</Table.Head>
-            <Table.Head>EMAIL</Table.Head>
-            <Table.Head>PHONE</Table.Head>
-            <Table.Head>ACTIONS</Table.Head>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {dummyData.map((data) => (
-            <Table.Row key={data.invoice}>
-              <Table.Data>{data.invoice}</Table.Data>
-              <Table.Data>{data.paymentStatus}</Table.Data>
-              <Table.Data>{data.paymentMethod}</Table.Data>
-              <Table.Data>{data.totalAmount}</Table.Data>
-              <Table.Data>
-                <ActionComponents />
-              </Table.Data>
+    <Card>
+      <Card.Content>
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <Table.Head>GIVEN NAME</Table.Head>
+              <Table.Head>SURNAME</Table.Head>
+              <Table.Head>EMAIL</Table.Head>
+              <Table.Head>PHONE</Table.Head>
+              <Table.Head>ACTIONS</Table.Head>
             </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </section>
+          </Table.Header>
+          <Table.Body>
+            {dummyData.map((data) => (
+              <Table.Row key={data.invoice}>
+                <Table.Data>{data.invoice}</Table.Data>
+                <Table.Data>{data.paymentStatus}</Table.Data>
+                <Table.Data>{data.paymentMethod}</Table.Data>
+                <Table.Data>{data.totalAmount}</Table.Data>
+                <Table.Data>
+                  <ActionComponents />
+                </Table.Data>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </Card.Content>
+    </Card>
   );
 }
 
