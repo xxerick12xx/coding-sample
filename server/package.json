@@ -2,12 +2,18 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon index.ts",
     "start": "node index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:create": "prisma migrate dev --create-only",
+    "migrate": "prisma migrate dev",
+    "seed": "node prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +25,8 @@
     "fastify": "^5.2.1",
     "mysql2": "^3.12.0",
     "nodemon": "^3.1.9",
-    "server": "file:"
+    "server": "file:",
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.10",
