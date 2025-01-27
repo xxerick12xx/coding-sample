@@ -3,26 +3,21 @@ import cors from "@fastify/cors";
 import { PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
 
-type CreateUser = RequestGenericInterface & { Body: Prisma.UserCreateInput };
-type UpdateUser = CreateUser & {
+type ParamID = {
   Params: {
     id: number;
   };
 };
 
-type DeleteUser = RequestGenericInterface & {
-  Params: {
-    id: number;
-  };
-};
+type CreateUser = RequestGenericInterface & { Body: Prisma.UserCreateInput };
+type UpdateUser = CreateUser & ParamID;
+type WithIdParams = RequestGenericInterface & ParamID;
 
 require("dotenv").config();
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5000;
 
-const fastify = Fastify({
-  logger: true,
-});
+const fastify = Fastify();
 
 fastify.register(cors, {
   // put your options here
@@ -30,6 +25,16 @@ fastify.register(cors, {
 
 fastify.get("/user", (req, reply) => {
   return prisma.user.findMany();
+});
+
+fastify.get<WithIdParams>("/user/:id", (req, reply) => {
+  const { id } = req.params;
+  const newId = typeof id === "string" ? parseInt(id) : id;
+  return prisma.user.findUnique({
+    where: {
+      id: newId,
+    },
+  });
 });
 
 fastify.post<CreateUser>("/user", (req, reply) => {
@@ -42,19 +47,21 @@ fastify.post<CreateUser>("/user", (req, reply) => {
 fastify.put<UpdateUser>("/user/:id", (req, reply) => {
   const { ...data } = req.body;
   const { id } = req.params;
+  const newId = typeof id === "string" ? parseInt(id) : id;
   return prisma.user.update({
     where: {
-      id: id,
+      id: newId,
     },
     data: data,
   });
 });
 
-fastify.delete<DeleteUser>("/user/:id", (req, reply) => {
+fastify.delete<WithIdParams>("/user/:id", (req, reply) => {
   const { id } = req.params;
+  const newId = typeof id === "string" ? parseInt(id) : id;
   return prisma.user.delete({
     where: {
-      id: id,
+      id: newId,
     },
   });
 });
