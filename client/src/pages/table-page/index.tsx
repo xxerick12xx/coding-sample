@@ -1,50 +1,19 @@
-import { Table, Button, Card } from "./../../ui";
-import { dummyData } from "./table-page.constant";
-import { Trash, Pencil } from "lucide-react";
+import TablePageComponent from "./table-page";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateData } from "./../../store/reducers/referral_list";
 
-const ActionComponents = () => {
-  return (
-    <>
-      <Button variant="ghost" size="icon">
-        <Pencil fill="#111" color="#fff" />
-      </Button>
-      <Button variant="ghost" size="icon">
-        <Trash fill="#111" color="#fff" />
-      </Button>
-    </>
-  );
-};
 function TablePage() {
-  return (
-    <Card>
-      <Card.Content>
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              <Table.Head>GIVEN NAME</Table.Head>
-              <Table.Head>SURNAME</Table.Head>
-              <Table.Head>EMAIL</Table.Head>
-              <Table.Head>PHONE</Table.Head>
-              <Table.Head>ACTIONS</Table.Head>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {dummyData.map((data) => (
-              <Table.Row key={data.invoice}>
-                <Table.Data>{data.invoice}</Table.Data>
-                <Table.Data>{data.paymentStatus}</Table.Data>
-                <Table.Data>{data.paymentMethod}</Table.Data>
-                <Table.Data>{data.totalAmount}</Table.Data>
-                <Table.Data>
-                  <ActionComponents />
-                </Table.Data>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </Card.Content>
-    </Card>
-  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/user`)
+      .then((response) => response.json())
+      .then((response) => {
+        dispatch(updateData(response));
+      });
+  }, []);
+
+  return <TablePageComponent />;
 }
 
 export default TablePage;
