@@ -12,12 +12,8 @@ fastify.register(cors, {
   // put your options here
 });
 
-fastify.get("/ping", async (request, reply) => {
-  return "pong\n";
-});
-
 fastify.get("/", (req, reply) => {
-  return process.env;
+  return process.env.DB_CONNECTION;
 });
 
 fastify.listen({ host: "0.0.0.0", port: PORT }, (err, address) => {
