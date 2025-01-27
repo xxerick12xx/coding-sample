@@ -1,25 +1,8 @@
-import { Table, Button, Card } from "./../../ui";
-import { Trash, Pencil } from "lucide-react";
+import { Table, Card } from "./../../ui";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
+import ActionComponents from "./action-component";
 
-const ActionComponents = (props: { id: number }) => {
-  const { id } = props;
-  return (
-    <>
-      <Link to={`/create/${id}`}>
-        <Button variant="ghost" size="icon">
-          <Pencil fill="#111" color="#fff" />
-        </Button>
-      </Link>
-
-      <Button variant="ghost" size="icon">
-        <Trash fill="#111" color="#fff" />
-      </Button>
-    </>
-  );
-};
 function TablePageComponent() {
   const referralList = useSelector((state: RootState) => state.referral_list);
   return (

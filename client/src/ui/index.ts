@@ -5,4 +5,5 @@ export * from "./form";
 export * from "./heading-tag";
 export * from "./input";
 export * from "./label";
+export * from "./modal";
 export * from "./table";
