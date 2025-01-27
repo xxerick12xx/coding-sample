@@ -48,10 +48,8 @@ const userData: Prisma.UserCreateInput[] = [
 ];
 
 export async function main() {
-  userData.forEach(async (res) => {
-    await prisma.user.create({
-      data: res,
-    });
+  await prisma.user.createMany({
+    data: userData,
   });
 }
 main()
