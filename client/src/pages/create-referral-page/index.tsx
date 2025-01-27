@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { SubmitHandler } from "react-hook-form";
-
+import { useParams } from "react-router";
 import {
   Button,
   Card,
@@ -8,21 +9,36 @@ import {
   Form,
   Input,
 } from "./../../ui";
-
 import { useCreateReferralHook } from "./create-referral-page.hooks";
 import { type FormFieldsProps } from "./create-referral-page.schema";
 
 const CreateReferralPage = () => {
+  const { id } = useParams();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useCreateReferralHook();
 
+  useEffect(() => {
+    if (id) {
+      fetch(`${import.meta.env.VITE_API_ENDPOINT}/user/${id}`)
+        .then((response) => response.json())
+        .then((response: FormFieldsProps) => {
+          Object.entries(response).map(([key, value]) => {
+            if (key !== "id") {
+              setValue(key, value);
+            }
+          });
+        });
+    }
+  }, [id, setValue]);
+
   const handleFormSubmit: SubmitHandler<FormFieldsProps> = async (formData) => {
-    console.log("Registering with:", formData);
-    fetch(`${import.meta.env.VITE_API_ENDPOINT}/user`, {
-      method: "POST",
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/user${id ? `/${id}` : ""}`, {
+      method: id ? "PUT" : "POST",
       body: JSON.stringify(formData),
     });
   };

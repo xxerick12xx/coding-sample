@@ -6,8 +6,8 @@ const defaultData: Omit<
   "given_name" | "last_name" | "email"
 > = {
   phone: "0453-283-283",
-  house_number: "",
-  street: "248 Test st.",
+  house_number: "2468",
+  street: "Test st.",
   suburb: "City Add",
   state: "State Add",
   postcode: "4444",

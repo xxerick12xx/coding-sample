@@ -2,13 +2,18 @@ import { Table, Button, Card } from "./../../ui";
 import { Trash, Pencil } from "lucide-react";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 
-const ActionComponents = () => {
+const ActionComponents = (props: { id: number }) => {
+  const { id } = props;
   return (
     <>
-      <Button variant="ghost" size="icon">
-        <Pencil fill="#111" color="#fff" />
-      </Button>
+      <Link to={`/create/${id}`}>
+        <Button variant="ghost" size="icon">
+          <Pencil fill="#111" color="#fff" />
+        </Button>
+      </Link>
+
       <Button variant="ghost" size="icon">
         <Trash fill="#111" color="#fff" />
       </Button>
@@ -38,7 +43,7 @@ function TablePageComponent() {
                 <Table.Data>{data.email}</Table.Data>
                 <Table.Data>{data.phone}</Table.Data>
                 <Table.Data>
-                  <ActionComponents />
+                  <ActionComponents id={data.id} />
                 </Table.Data>
               </Table.Row>
             ))}

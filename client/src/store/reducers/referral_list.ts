@@ -1,9 +1,9 @@
 import { type FormFieldsProps } from "./../../pages/create-referral-page/create-referral-page.schema";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type dataProps = FormFieldsProps & { id: number };
+export type DataProps = FormFieldsProps & { id: number };
 type initialStateProps = {
-  data: dataProps[];
+  data: DataProps[];
 };
 
 const initialState: initialStateProps = {
@@ -16,7 +16,7 @@ const referralList = createSlice({
   reducers: {
     updateData: (
       state: initialStateProps,
-      action: PayloadAction<dataProps[]>
+      action: PayloadAction<DataProps[]>
     ) => {
       state.data = action.payload;
     },
