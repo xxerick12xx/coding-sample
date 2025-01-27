@@ -4,14 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "nodemon index.ts",
+    "start": "node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2",
-    "server": "file:",
-    "sqlite3": "^5.1.7"
+    "@fastify/cors": "^10.0.2",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "mysql2": "^3.12.0",
+    "nodemon": "^3.1.9",
+    "server": "file:"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "prisma": "^6.2.1",
+    "typescript": "^5.7.3"
   }
 }
