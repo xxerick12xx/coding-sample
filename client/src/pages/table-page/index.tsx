@@ -11,7 +11,7 @@ function TablePage() {
       .then((response) => {
         dispatch(updateData(response));
       });
-  }, []);
+  }, [dispatch]);
 
   return <TablePageComponent />;
 }

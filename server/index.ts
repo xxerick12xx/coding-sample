@@ -38,21 +38,24 @@ fastify.get<WithIdParams>("/user/:id", (req, reply) => {
 });
 
 fastify.post<CreateUser>("/user", (req, reply) => {
-  const { ...data } = req.body;
+  const data = req.body;
+  const newData = typeof data === "string" ? JSON.parse(data) : data;
   return prisma.user.create({
-    data: data,
+    data: newData,
   });
 });
 
 fastify.put<UpdateUser>("/user/:id", (req, reply) => {
-  const { ...data } = req.body;
+  const data = req.body;
   const { id } = req.params;
+
+  const newData = typeof data === "string" ? JSON.parse(data) : data;
   const newId = typeof id === "string" ? parseInt(id) : id;
   return prisma.user.update({
     where: {
       id: newId,
     },
-    data: data,
+    data: newData,
   });
 });
 

@@ -21,6 +21,10 @@ const CreateReferralPage = () => {
 
   const handleFormSubmit: SubmitHandler<FormFieldsProps> = async (formData) => {
     console.log("Registering with:", formData);
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/user`, {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
   };
 
   return (
