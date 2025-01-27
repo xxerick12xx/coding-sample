@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import {
   Button,
   Card,
@@ -11,10 +11,11 @@ import {
 } from "./../../ui";
 import { useCreateReferralHook } from "./create-referral-page.hooks";
 import { type FormFieldsProps } from "./create-referral-page.schema";
+import { toast } from "react-toastify";
 
 const CreateReferralPage = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -40,6 +41,13 @@ const CreateReferralPage = () => {
     fetch(`${import.meta.env.VITE_API_ENDPOINT}/user${id ? `/${id}` : ""}`, {
       method: id ? "PUT" : "POST",
       body: JSON.stringify(formData),
+    }).then(() => {
+      toast.success(id ? "data updated" : "Referral added", {
+        position: "top-center",
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     });
   };
 
